@@ -1,5 +1,5 @@
-import clsx from "clsx";
 import css from "./FriendList.module.css";
+import FriendListItem from "../FriendListItem/FriendListItem";
 
 const FriendList = ({ friends }) => {
   return (
@@ -8,21 +8,11 @@ const FriendList = ({ friends }) => {
         {friends.map((friend) => {
           return (
             <li className={css.listItem} key={friend.id}>
-              <img
-                className={css.avatar}
-                src={friend.avatar}
-                alt="Avatar"
-                width="48"
+              <FriendListItem
+                avatar={friend.avatar}
+                name={friend.name}
+                isOnline={friend.isOnline}
               />
-              <p className={css.nickName}>{friend.name}</p>
-              <p
-                className={clsx(
-                  css.status,
-                  friend.isOnline ? css.online : css.offline
-                )}
-              >
-                {friend.isOnline ? "Online" : "Offline"}
-              </p>
             </li>
           );
         })}
